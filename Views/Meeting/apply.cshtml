@@ -1,0 +1,37 @@
+@model UserInfo
+@{
+    ViewBag.Title = "Başvuru Formu";
+}
+
+<h1 class="h4 text-center">Toplantı Katılım Formu</h1>
+<form  method="post" action="/Meeting/apply" novalidate> 
+    <!-- "get" methodu yaptığımız zaman forma yazıp kaydettiğimiz bilgiler url kısmına kaydolur, "post yaptığımız zaman metodu
+extra bir body içerisinde görülür yani bilgilerimiz inspect kısmında network -> apply -> payload bölümünde gözükür ve url değişmez. post request i karşılayan bir "Action metodu lazım" çünkü butona bastığımız post request gerekli-->
+        <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label" >İsim & Soyisim</label>
+        <input asp-for="Name" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label">Telefon</label>
+        <input asp-for="Phone" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="WillAttend" class="form-label">Katılım</label>
+        <select asp-for="WillAttend" class="form-select">
+            <option value="">Seçiniz</option>
+            <option value="true">Evet, katılacağım</option>
+            <option value="false">Hayır, katılmayacağım</option>
+
+        </select>
+    </div>
+
+
+
+    <button class="btn btn-info" type="submit">Kaydet</button>
+</form>
+
